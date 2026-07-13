@@ -1,0 +1,133 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  background-color: whitesmoke;
+  padding: 10px;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+}
+
+nav {
+  margin-bottom: 20px;
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(92, 92, 210);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+button {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.products {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.product-card {
+  height: 40%;
+  width: 20%;
+  border-radius: 10px;
+  border: 1px solid gray;
+  background-color: #d7d7d7;
+  box-shadow: 3px 0px 10px rgba(160, 157, 157, 0.981);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.img {
+  height: 60%;
+  width: 100%;
+}
+.img img {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.btns {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+#update {
+  background-color: darkgoldenrod;
+  color: #d7d7d7;
+}
+#del {
+  background-color: darkgoldenrod;
+  color: #d7d7d7;
+}
+.forms {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+form {
+  width: 50%;
+
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 15px;
+  padding: 20px;
+
+  background-color: #b2a5a5;
+}
+input {
+  padding: 10px;
+  outline: none;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+
+.forms .top{
+    display: flex;
+    width: 50%;
+    font-size: 40px;
+    justify-content: space-between;
+}
