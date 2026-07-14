@@ -1,0 +1,45 @@
+import React, { useContext, useEffect } from "react";
+import axios from "axios";
+import Navbar from "./components/Navbar";
+import ProductCard from "./components/ProductCard";
+import CartScreen from "./pages/CartScreen";
+import { MyStore } from "./context/MyContext";
+const App = () => {
+  let { productData, setProductData, isCartOpen, cartItems } =
+    useContext(MyStore);
+  const getProductData = async () => {
+    try {
+      let res = await axios("https://fakestoreapi.com/products");
+      setProductData(res.data);
+    } catch (error) {
+      console.log("Error in api", error);
+    }
+  };
+
+  useEffect(() => {
+    getProductData();
+  }, []);
+
+  return (
+    <div className="h-screen p-2 flex flex-col gap-4">
+      <Navbar />
+      {isCartOpen ? (
+        <div>
+          <CartScreen />
+        </div>
+      ) : (
+        <div className="grid grid-cols-4 gap-4">
+          {productData.map((elem) => {
+            let isInCart = cartItems.find((val) => val.id === elem.id);
+
+            return (
+              <ProductCard key={elem.id} product={elem} isInCart={isInCart} />
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default App;
