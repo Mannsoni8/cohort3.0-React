@@ -4,6 +4,7 @@ import { MyStore } from "../context/MyContext";
 
 const CartProductCard = ({ product }) => {
   let { incrementQuntatity, decrementQuntatity } = useContext(MyStore);
+
   return (
     <div className="flex items-center gap-5 p-4 bg-white rounded-xl shadow-md">
       {/* Product Image */}

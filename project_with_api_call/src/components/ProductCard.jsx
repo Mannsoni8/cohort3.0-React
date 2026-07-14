@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { MyStore } from "../context/MyContext";
+import { Trash2, Plus, Minus } from "lucide-react";
 
 const ProductCard = ({ product, isInCart }) => {
-  let { setCartItems } = useContext(MyStore);
+  let { setCartItems, incrementQuntatity, decrementQuntatity } =
+    useContext(MyStore);
 
   const addToCart = () => {
     setCartItems((prev) => [...prev, { ...product, quantity: 1 }]);
@@ -39,17 +41,36 @@ const ProductCard = ({ product, isInCart }) => {
         <div className="flex items-center justify-between mt-5">
           <p className="text-2xl font-bold text-green-600">${product.price}</p>
 
-          {isInCart ? (
-            <button className="px-4 py-2 bg-green-600 text-white rounded-lg">
-              Go to Cart
-            </button>
-          ) : (
+          {!isInCart ? (
             <button
               onClick={addToCart}
               className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
             >
               Add to Cart
             </button>
+          ) : (
+            <div className="flex">
+              <button className="px-4 py-2 bg-green-600 text-white rounded-lg">
+                Go to Cart
+              </button>
+              <button
+                onClick={() => decrementQuntatity(product.id)}
+                className="p-2 hover:bg-gray-100"
+              >
+                <Minus size={18} />
+              </button>
+
+              <span className="px-4 font-semibold text-amber-200">
+                {isInCart.quantity}
+              </span>
+
+              <button
+                onClick={() => incrementQuntatity(product.id)}
+                className="p-2 hover:bg-gray-100"
+              >
+                <Plus size={18} />
+              </button>
+            </div>
           )}
         </div>
       </div>
