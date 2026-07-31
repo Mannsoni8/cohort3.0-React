@@ -1,10 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import AuthLayout from "../app/layout/AuthLayout";
 import PublicProtected from "./protected/PublicProtected";
 import LoginPages from "../feature/auth/ui/pages/LoginPages";
 import RegisterPage from "../feature/auth/ui/pages/RegisterPage";
+import MainProtected from "./protected/MainProtected";
+import MainLayout from "../app/layout/MainLayout";
+import HomePage from "../shared/ui/pages/HomePage";
+import ProductPage from "../feature/products/ui/pages/ProductPage";
+import CartPage from "../feature/cart/ui/pages/CartPage";
+import OrderPage from "../feature/orders/ui/pages/OrderPage";
+import { useDispatch } from "react-redux";
+import { hydrateUser } from "../feature/auth/api/api";
+import { addUser } from "../feature/auth/state/authSlice";
+
 const AppRoutes = () => {
+  let dispatch = useDispatch();
+
+  useEffect(() => {
+    (async () => {
+      try {
+        let res = await hydrateUser();
+        console.log(res);
+        dispatch(addUser(res));
+      } catch (error) {
+        console.log("error in hydration..", error);
+      }
+    })();
+  }, []);
+
   let router = createBrowserRouter([
     {
       path: "/",
@@ -27,10 +51,35 @@ const AppRoutes = () => {
       ],
     },
     {
-        
-    }
+      path: "/main",
+      element: <MainProtected />,
+      children: [
+        {
+          path: "",
+          element: <MainLayout />,
+          children: [
+            {
+              path: "",
+              element: <HomePage />,
+            },
+            {
+              path: "product",
+              element: <ProductPage />,
+            },
+            {
+              path: "cart",
+              element: <CartPage />,
+            },
+            {
+              path: "orders",
+              element: <OrderPage />,
+            },
+          ],
+        },
+      ],
+    },
   ]);
-  return <RouterProvider />;
+  return <RouterProvider router={router} />;
 };
 
 export default AppRoutes;

@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { FastForward } from "lucide-react";
 
 const authSlice = createSlice({
   name: "auth",
@@ -15,7 +14,9 @@ const authSlice = createSlice({
       state.isLoading = false;
     },
     removeUser: (state) => {
-      ((state.user = null), (state.isAuthenticated = false));
+      state.user = null;
+      state.isAuthenticated = false;
+      state.isLoading = false;
     },
   },
 });
