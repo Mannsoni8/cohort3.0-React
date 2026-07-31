@@ -4,9 +4,11 @@ import Navbar from "../components/NAvbar";
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className="p-2 min-h-screen bg-black text-white">
       <Navbar />
-      <Outlet />
+      <div className="p-4">
+        <Outlet />
+      </div>
     </div>
   );
 };

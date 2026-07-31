@@ -1,2 +1,4 @@
 import axios from "axios";
-export const axiosInstance = () => {};
+export const axiosInstance = axios.create({
+  baseURL: "https://dummyjson.com",
+});
