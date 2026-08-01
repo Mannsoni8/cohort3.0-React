@@ -1,17 +1,19 @@
 import React, { useEffect } from "react";
+import { addUser } from "../features/authSilce";
 import { createBrowserRouter, RouterProvider } from "react-router";
-import AuthLayout from "../layout/AuthLayout";
-import LoginPage from "../pages/LoginPage";
-import RegisterPage from "../pages/RegisterPage";
-import MainLayout from "../layout/MainLayout";
-import HomePage from "../pages/HomePage";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { addUser } from "../features/authSilce";
-import PublicProtected from "./protected/PublicProtected";
-import MainProtected from "./protected/MainProtected";
-import AboutPage from "../pages/AboutPage";
-import ShopePage from "../pages/ShopePage";
+import { lazy } from "react";
+
+const AuthLayout = lazy(() => import("../layout/AuthLayout"));
+const LoginPage = lazy(() => import("../pages/LoginPage"));
+const RegisterPage = lazy(() => import("../pages/RegisterPage"));
+const MainLayout = lazy(() => import("../layout/MainLayout"));
+const HomePage = lazy(() => import("../pages/HomePage"));
+const PublicProtected = lazy(() => import("./protected/PublicProtected"));
+const MainProtected = lazy(() => import("./protected/MainProtected"));
+const AboutPage = lazy(() => import("../pages/AboutPage"));
+const ShopePage = lazy(() => import("../pages/ShopePage"));
 
 const AppRoutes = () => {
   let dispatch = useDispatch();

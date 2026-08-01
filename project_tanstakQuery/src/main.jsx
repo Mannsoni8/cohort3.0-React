@@ -5,13 +5,7 @@ import App from "./App.jsx";
 import AppRoutes from "./routes/AppRoutes.jsx";
 import { Provider } from "react-redux";
 import { store } from "./app/store.js";
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
 
